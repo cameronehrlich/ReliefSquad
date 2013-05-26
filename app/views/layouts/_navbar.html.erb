@@ -6,17 +6,26 @@
 				<%= link_to "Book", root_path %>
 			</li>
 			<li class="<%= 'active' if params[:controller] == 'services' %>">
-				<%= link_to "Services", root_path %>
+				<%= link_to "Services", services_index_path %>
 			</li>
 			<li class="<%= 'active' if params[:controller] == 'contact' %>">
-				<%= link_to "Contact Us", root_path %>
+				<%= link_to "Contact Us", contact_index_path %>
 			</li>
 
 		</ul>
 		<ul class="nav pull-right">
-			<li class="<%= 'active' if params[:controller] == 'account' %>">
-				<%= link_to "My Account", root_path %>
-			</li>
+			<% if user_signed_in? %>
+				<li class="<%= 'active' if params[:controller] == 'account' %>">
+					<%= link_to current_user.email, account_index_path %>
+				</li>
+				<li>
+					<%= link_to "Sign Out", destroy_session_path(:user), :method => :delete %>
+				</li>
+			<% else %>
+				<li class="<%= 'active' if params[:controller] == 'account' %>">
+					<%= link_to "Sign In or Sign Up", account_index_path %>
+				</li>
+			<% end %>
 		</ul>
 	</div>
 </div>

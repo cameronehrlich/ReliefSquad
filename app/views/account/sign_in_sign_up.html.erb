@@ -1,0 +1,50 @@
+<h1>Sign Up or Sign In</h1>
+<hr>
+<div class="well well-small">
+	<table class="table table-bordered">
+		<th style="text-align:center;"><h3>Sign Up</h3></th>
+		<th style="text-align:center;"><h3>Sign In</h3></th>
+		<tr>
+			<td class="span4">
+				<%= form_for("user", :url => user_registration_path) do |f| %>
+					<dl class="dl-horizontal">
+						<dt>Email</dt>
+						<dd><%= f.text_field :email %></dd>
+						<br>
+						<dt>Password</dt>
+						<dd><%= f.password_field :password %></dd>
+						<br>
+						<dt>Confirm Password</dt>
+						<dd><%= f.password_field :password_confirmation %></dd>
+						<br>
+						<dt></dt>
+						<dd><%= f.submit 'Create Account', :class => "btn btn-primary btn-large" %></dd>
+						<br>
+					</dl>
+				<% end %>
+			</td>
+			<td class="span4">
+				<%= form_for("user", :url => user_session_path) do |f| %>
+					<dl class="dl-horizontal">
+						<dt>Email</dt>
+						<dd><%= f.text_field :email %></dd>
+						<br>
+						<dt>Password</dt>
+						<dd><%= f.password_field :password %></dd>
+						<br>
+						<dt>Remember me</dt>
+						<dd><%= f.check_box :remember_me %></dd>
+						<br>
+						<dt></dt>
+						<dd><%= f.submit 'Sign in', :class => "btn btn-primary btn-large" %></dd>
+
+					</dl>
+					<div class="pull-right">
+				  		<%= link_to "Forgot your password?", new_password_path('user') %>
+					</div>
+
+				<% end %>
+			</td>
+		</tr>
+	</table>
+</div>

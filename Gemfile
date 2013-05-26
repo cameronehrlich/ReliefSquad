@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'devise'
 
 gem 'sqlite3', :group => :development
 gem 'pg', :group => :production
